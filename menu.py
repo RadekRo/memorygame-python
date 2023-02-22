@@ -1,8 +1,14 @@
 from common import clear
 
+def get_user_choice():
+    choice = int(input("Your choice?: "))
+    return choice
+
 def menu():
-    clear()
-    print("""#     # ####### #     # ####### ######  #     # 
+    valid_user_entry = False
+    while valid_user_entry == False:
+        clear()
+        print("""#     # ####### #     # ####### ######  #     # 
 ##   ## #       ##   ## #     # #     #  #   #  
 # # # # #       # # # # #     # #     #   # #   
 #  #  # #####   #  #  # #     # ######     #    
@@ -17,6 +23,7 @@ Choose a difficulty level:
 2. MEDIUM
 3. HARD
 4. QUIT""")
-    choice = input("Your choice?: ")
-
-menu()
+        user_entry = get_user_choice()
+        valid_user_entry = True if user_entry > 0 and user_entry < 5 else False
+    return user_entry
+print(menu())
