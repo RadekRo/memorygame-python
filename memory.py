@@ -1,6 +1,6 @@
 from common import clear
 from menu import menu
-from board import get_empty_board, display_board
+from board import get_empty_board, display_board, draw_horizontal_line
 
 game_mode = menu()
 clear()
@@ -15,4 +15,7 @@ match game_mode:
         height, width = (5, 5)
         level = "HARD"
 board = get_empty_board(height, width)
+print("Game level:", level)
+print("Current score:", level)
+print(draw_horizontal_line(6, "="))
 display_board(board)

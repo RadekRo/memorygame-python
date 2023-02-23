@@ -1,7 +1,7 @@
 import string
 
-def draw_horizontal_line(width):
-  return "-" * 4 * width
+def draw_horizontal_line(width, style):
+  return style * 4 * width
 
 def get_new_line():
   return "\n"
@@ -23,13 +23,13 @@ def display_board(board):
     draw_board += f" {string.ascii_uppercase[i]} |"
   draw_board += get_new_line()
   for row in board:
-    draw_board += draw_horizontal_line(board_width + 1)
+    draw_board += draw_horizontal_line(board_width + 1, "-")
     draw_board += f"\n {current_row} |"
     for col in row:
       draw_board += f" {col} |"
     draw_board += get_new_line()
     current_row += 1
-  draw_board += draw_horizontal_line(board_width + 1)
+  draw_board += draw_horizontal_line(board_width + 1, "-")
   print(draw_board)
   
 print(display_board((["#", "S", "#"], ["#", "#", "#"], ["#", "#", "#"])))
