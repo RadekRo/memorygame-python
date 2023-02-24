@@ -2,6 +2,10 @@ from common import clear
 from menu import menu
 from board import get_empty_board, display_board, draw_horizontal_line
 
+def user_move():
+    choice = input("Choose a card (A1, B3...) to uncover: ")
+    return choice[0].isalpha() and choice[1].isdigit()
+
 game_mode = menu()
 clear()
 match game_mode:
@@ -19,3 +23,4 @@ print("Game level:", level)
 print("Current score:", level)
 print(draw_horizontal_line(6, "="))
 display_board(board)
+print(user_move())
