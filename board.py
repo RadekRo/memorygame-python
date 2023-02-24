@@ -31,4 +31,4 @@ def display_board(board):
   draw_board += draw_horizontal_line(board_width + 1, "-")
   print(draw_board)
   
-print(display_board((["#", "S", "#"], ["#", "#", "#"], ["#", "#", "#"])))
+# print(display_board((["#", "S", "#"], ["#", "#", "#"], ["#", "#", "#"])))
