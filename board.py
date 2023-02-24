@@ -13,6 +13,9 @@ def get_empty_board(width, height):
     board.append(cols)
   return board
 
+def get_hidden_random_board(width, height):
+    pass
+
 def display_board(board):
   alphabet_letters = string.ascii_uppercase
   board_width = len(board[0])
