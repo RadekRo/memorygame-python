@@ -2,7 +2,7 @@ from common import clear
 from menu import menu
 from board import get_empty_board, display_board, draw_horizontal_line
 from coordinates import get_human_coordinates
-
+from time import sleep
 
 game_mode = menu()
 clear()
@@ -31,7 +31,9 @@ while game_running == True:
         print("WRONG ENTRY! Please provide proper coordinates!")
     user_coordinates = get_human_coordinates(width)
     if user_coordinates == "quit":
-        print("You've chosen to end the game! See you next time!")
+        print("QUITTING THE GAME... Please wait...")
+        sleep(1)
+        print("GAME OVER! See you next time!")
         break
     elif user_coordinates == False:
         clear()

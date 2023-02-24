@@ -18,5 +18,3 @@ def get_human_coordinates(board_width):
         return change_user_entry_to_coordinates(choice)
     else:
         return False
-
-#print(get_human_coordinates(5))
