@@ -20,16 +20,23 @@ match game_mode:
 board = get_empty_board(height, width)
 game_running = True
 user_coordinates = True
+turn = 1
 while game_running == True:
     print("Game level:", level)
-    print("Current score:", level)
+    print("Current move:", turn)
+    print("Type \033[1m'quit'\033[0m to exit the game")
     print(draw_horizontal_line(6, "="))
     display_board(board)
     if user_coordinates == False:
         print("WRONG ENTRY! Please provide proper coordinates!")
     user_coordinates = get_human_coordinates(width)
-    if user_coordinates == False:
+    if user_coordinates == "quit":
+        print("You've chosen to end the game! See you next time!")
+        break
+    elif user_coordinates == False:
         clear()
         continue
+    turn += 1
     print("PROGRAM IS WORKING CORRECTLY")
+    print(user_coordinates)
     break

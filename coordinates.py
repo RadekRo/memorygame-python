@@ -12,9 +12,11 @@ def change_user_entry_to_coordinates(entry):
 
 def get_human_coordinates(board_width):
     choice = input("Choose a card (A1, B3...) to uncover: ")
+    if choice == "quit":
+        return choice
     if user_entry_validation(choice) and board_range_validation(choice, board_width):
         return change_user_entry_to_coordinates(choice)
     else:
         return False
 
-print(get_human_coordinates(5))
+#print(get_human_coordinates(5))
