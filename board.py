@@ -14,7 +14,9 @@ def get_empty_board(width, height):
   return board
 
 def get_hidden_random_board(width, height):
-    pass
+    calculate_total_board_places = width * height
+    get_letters_for_shuffle = [*string.ascii_uppercase][0:calculate_total_board_places] * 2
+    print(get_letters_for_shuffle)
 
 def display_board(board):
   alphabet_letters = string.ascii_uppercase
@@ -35,3 +37,4 @@ def display_board(board):
   print(draw_board)
   
 # print(display_board((["#", "S", "#"], ["#", "#", "#"], ["#", "#", "#"])))
+print(get_hidden_random_board(4, 5))
