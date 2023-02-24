@@ -14,12 +14,12 @@ def get_empty_board(width, height):
   return board
 
 def display_board(board):
-  alphabet = string.ascii_uppercase
+  alphabet_letters = string.ascii_uppercase
   board_width = len(board[0])
   current_row = 1
   draw_board = "   |"
   for i in range(0, board_width):
-    draw_board += f" {alphabet[i]} |"
+    draw_board += f" {alphabet_letters[i]} |"
   draw_board += get_new_line()
   for row in board:
     draw_board += draw_horizontal_line(board_width + 1, "-")
