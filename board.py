@@ -8,9 +8,7 @@ def get_new_line():
 
 def get_empty_board(width, height):
   board = list()
-  cols = []
-  for i in range(0, width):
-    cols.append("#")
+  cols = ["#"] * width
   for i in range(0, height):
     board.append(cols)
   return board
