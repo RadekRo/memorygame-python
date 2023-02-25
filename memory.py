@@ -1,6 +1,6 @@
 from common import clear
 from menu import menu
-from board import get_empty_board, display_board, draw_horizontal_line
+from board import get_empty_board, display_board, draw_horizontal_line, get_solved_random_board, uncover_tiles
 from coordinates import get_human_coordinates
 from time import sleep
 
@@ -9,16 +9,16 @@ clear()
 
 match game_mode:
     case 1:
-        height, width = (3, 2)
+        width, height = (3, 2)
         level = "EASY"
     case 2:
-        height, width = (4, 3)
+        width, height = (4, 3)
         level = "MEDIUM"
     case 3:
-        height, width = (5, 4)
+        width, height = (5, 4)
         level = "HARD"
 
-board = get_empty_board(height, width)
+board = get_empty_board(width, height)
 game_running = True
 user_coordinates = True
 turn = 1
@@ -45,7 +45,7 @@ while game_running == True:
         clear()
         continue
 
+    #print("PROGRAM IS WORKING CORRECTLY")
+    #print(user_coordinates)
+    #board = uncover_tiles(user_coordinates, board, solved_board, turn)
     turn += 1
-    print("PROGRAM IS WORKING CORRECTLY")
-    print(user_coordinates)
-    break

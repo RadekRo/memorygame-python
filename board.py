@@ -7,25 +7,34 @@ def get_new_line():
   return "\n"
 
 def get_empty_board(width, height):
-  board = list()
-  cols = ["#"] * width
-  for i in range(0, height):
-    board.append(cols)
+  board = {}
+  for i in range(0, width):
+    letter = string.ascii_uppercase[i]
+    for number in range(1, height + 1):
+      key = letter + str(number) 
+      board[key] = "#"
+  print(board)
+
+def get_solved_board(width, height):
+  random_board = {}
+  index = 0
+  calculate_board_space = int(width * height / 2)
+  get_letters_for_shuffle = [*string.ascii_uppercase][0:calculate_board_space] * 2
+  random.shuffle(get_letters_for_shuffle)
+  for i in range(0, width):
+    letter = string.ascii_uppercase[i]
+    for number in range(1, height + 1):
+      key = letter + str(number) 
+      random_board[key] = get_letters_for_shuffle[index]
+      index += 1
+  return random_board
+
+def uncover_tiles(coordinates, board, solution, turn):
+  row = coordinates[0]
+  col = coordinates[1]
+  print(row, col)
+  board[row][col] = solution[row][col]
   return board
-
-def get_solved_random_board(width, height):
-    random_board = []
-    calculate_total_board_places = width * height
-    get_letters_for_shuffle = [*string.ascii_uppercase][0:calculate_total_board_places] * 2
-    random.shuffle(get_letters_for_shuffle)
-    for i in range(0, height):
-      columns = []
-      for j in range(0, width):
-        columns.append(get_letters_for_shuffle[0])
-        get_letters_for_shuffle.pop(0)
-      random_board.append(columns)
-    return random_board
-
 
 def display_board(board):
   alphabet_letters = string.ascii_uppercase
@@ -45,5 +54,5 @@ def display_board(board):
   draw_board += draw_horizontal_line(board_width + 1, "-")
   print(draw_board)
   
-# print(display_board((["#", "S", "#"], ["#", "#", "#"], ["#", "#", "#"])))
-print(get_solved_random_board(4, 3))
+get_empty_board(4,3)
+get_solved_board(4,3)
