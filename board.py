@@ -13,10 +13,10 @@ def get_empty_board(width, height):
     for number in range(1, height + 1):
       key = letter + str(number) 
       board[key] = "#"
-  print(board)
+  return board
 
 def get_solved_board(width, height):
-  random_board = {}
+  solved_board = {}
   index = 0
   calculate_board_space = int(width * height / 2)
   get_letters_for_shuffle = [*string.ascii_uppercase][0:calculate_board_space] * 2
@@ -25,34 +25,29 @@ def get_solved_board(width, height):
     letter = string.ascii_uppercase[i]
     for number in range(1, height + 1):
       key = letter + str(number) 
-      random_board[key] = get_letters_for_shuffle[index]
+      solved_board[key] = get_letters_for_shuffle[index]
       index += 1
-  return random_board
+  return solved_board
 
-def uncover_tiles(coordinates, board, solution, turn):
-  row = coordinates[0]
-  col = coordinates[1]
-  print(row, col)
-  board[row][col] = solution[row][col]
-  return board
-
-def display_board(board):
-  alphabet_letters = string.ascii_uppercase
-  board_width = len(board[0])
+def display_board(board, width, height):
+  alphabet_letters = string.ascii_uppercase[0:width]
+  print(alphabet_letters)
   current_row = 1
+  display_width = width + 1
   draw_board = "   |"
-  for i in range(0, board_width):
+  for i in range(0, width):
     draw_board += f" {alphabet_letters[i]} |"
   draw_board += get_new_line()
-  for row in board:
-    draw_board += draw_horizontal_line(board_width + 1, "-")
+  for row in range(0, height):
+    draw_board += draw_horizontal_line(display_width, "-")
     draw_board += f"\n {current_row} |"
-    for col in row:
-      draw_board += f" {col} |"
+    for col in range(1, display_width):
+      key = alphabet_letters[col-1] + str(current_row)
+      draw_board += f" {board[key]} |"
     draw_board += get_new_line()
     current_row += 1
-  draw_board += draw_horizontal_line(board_width + 1, "-")
+  draw_board += draw_horizontal_line(display_width, "-")
   print(draw_board)
-  
-get_empty_board(4,3)
-get_solved_board(4,3)
+
+
+display_board(get_empty_board(5, 4), 5, 4)

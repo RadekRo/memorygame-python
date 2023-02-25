@@ -1,6 +1,6 @@
 from common import clear
 from menu import menu
-from board import get_empty_board, display_board, draw_horizontal_line, get_solved_random_board, uncover_tiles
+from board import get_empty_board, display_board, draw_horizontal_line
 from coordinates import get_human_coordinates
 from time import sleep
 
@@ -30,11 +30,11 @@ while game_running == True:
     print("Type \033[1m'quit'\033[0m to exit the game")
     print(draw_horizontal_line(6, "="))
     #main board
-    display_board(board)
+    display_board(board, width, height)
 
     if user_coordinates == False:
         print("WRONG ENTRY! Please provide proper coordinates!")
-    user_coordinates = get_human_coordinates(width)
+    #user_coordinates = get_human_coordinates(width)
 
     if user_coordinates == "quit":
         print("QUITTING THE GAME... Please wait...")
