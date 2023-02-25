@@ -13,7 +13,7 @@ def change_user_entry_to_key(entry):
     return col + row
 
 def get_human_coordinates(board_width, board_height):
-    choice = input("Choose a card (A1, B2...) to uncover: ")
+    choice = input("Choose a card (A1, B1...) to uncover: ")
     if choice == "quit":
         return choice
     if user_entry_validation(choice) and board_range_validation(choice, board_width, board_height):

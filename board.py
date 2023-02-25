@@ -1,10 +1,16 @@
-import string, random
+import string, random, time
 
 def draw_horizontal_line(width, style):
   return style * 4 * width
 
 def get_new_line():
   return "\n"
+
+def check_status(value):
+  if value == "#":
+    return "free"
+  else:
+    return "occupied"
 
 def get_empty_board(width, height):
   board = {}
@@ -47,3 +53,16 @@ def display_board(board, width, height):
     current_row += 1
   draw_board += draw_horizontal_line(display_width, "-")
   print(draw_board)
+
+def expose_tile(coords, board, solution):
+  status = check_status(str(board[coords]))
+  if status == "free":
+    change = solution[coords]
+    board[coords] = str(change)
+  else:
+    print("***UNLUCKY! THIS POSITION IS ALREADY UNCOVERED!***\n***TRY AGAIN! (One turn lost)***")  
+    time.sleep(1.2)
+  return board
+  
+def validate_pair(chosen_pair, board):
+  return board[chosen_pair[1]] == board[chosen_pair[2]]
