@@ -1,4 +1,4 @@
-import string
+import string, random
 
 def draw_horizontal_line(width, style):
   return style * 4 * width
@@ -13,10 +13,19 @@ def get_empty_board(width, height):
     board.append(cols)
   return board
 
-def get_hidden_random_board(width, height):
+def get_solved_random_board(width, height):
+    random_board = []
     calculate_total_board_places = width * height
     get_letters_for_shuffle = [*string.ascii_uppercase][0:calculate_total_board_places] * 2
-    print(get_letters_for_shuffle)
+    random.shuffle(get_letters_for_shuffle)
+    for i in range(0, height):
+      columns = []
+      for j in range(0, width):
+        columns.append(get_letters_for_shuffle[0])
+        get_letters_for_shuffle.pop(0)
+      random_board.append(columns)
+    return random_board
+
 
 def display_board(board):
   alphabet_letters = string.ascii_uppercase
@@ -37,4 +46,4 @@ def display_board(board):
   print(draw_board)
   
 # print(display_board((["#", "S", "#"], ["#", "#", "#"], ["#", "#", "#"])))
-print(get_hidden_random_board(4, 5))
+print(get_solved_random_board(4, 3))
