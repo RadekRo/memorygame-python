@@ -31,7 +31,6 @@ def get_solved_board(width, height):
 
 def display_board(board, width, height):
   alphabet_letters = string.ascii_uppercase[0:width]
-  print(alphabet_letters)
   current_row = 1
   display_width = width + 1
   draw_board = "   |"
@@ -48,6 +47,3 @@ def display_board(board, width, height):
     current_row += 1
   draw_board += draw_horizontal_line(display_width, "-")
   print(draw_board)
-
-
-display_board(get_empty_board(5, 4), 5, 4)

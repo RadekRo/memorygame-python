@@ -1,6 +1,6 @@
 from common import clear
 from menu import menu
-from board import get_empty_board, display_board, draw_horizontal_line
+from board import get_empty_board, display_board, draw_horizontal_line, get_solved_board
 from coordinates import get_human_coordinates
 from time import sleep
 
@@ -19,6 +19,7 @@ match game_mode:
         level = "HARD"
 
 board = get_empty_board(width, height)
+solution = get_solved_board(width, height)
 game_running = True
 user_coordinates = True
 turn = 1
@@ -34,8 +35,7 @@ while game_running == True:
 
     if user_coordinates == False:
         print("WRONG ENTRY! Please provide proper coordinates!")
-    #user_coordinates = get_human_coordinates(width)
-
+    user_coordinates = get_human_coordinates(width, height)
     if user_coordinates == "quit":
         print("QUITTING THE GAME... Please wait...")
         sleep(1)
@@ -45,7 +45,5 @@ while game_running == True:
         clear()
         continue
 
-    #print("PROGRAM IS WORKING CORRECTLY")
-    #print(user_coordinates)
-    #board = uncover_tiles(user_coordinates, board, solved_board, turn)
+    clear()
     turn += 1
